@@ -38,7 +38,7 @@ Requirements: Claude Code, and `python3` on the PATH (it draws the map; standard
 | `/lodestar <feature>` | starts a voyage for that ticket, or resumes it |
 | `/lodestar` | shows the sea: every voyage of the project and its stage, then the next ticket |
 | "let's stop" (in any language) | Claude writes where you stopped and shows the map |
-| "let's go back" | Claude shows the map with every island and block numbered; answer `2.b` |
+| "let's go back" | Claude shows the map with every island and block numbered; answer with a place and a reason, e.g. `2b code` |
 
 Installed as a plugin, Claude Code may list the command as `/lodestar:lodestar`. Lodestar never starts on its own:
 when you describe a new ticket, Claude offers it in one line.

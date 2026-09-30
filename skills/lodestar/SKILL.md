@@ -83,12 +83,21 @@ Show it twice, and only then: on an island change (`--transit`: the boat on the 
 
 ## Going back
 When the user wants to revisit something already covered:
-1. Run the chart with `--pick` and paste it as is. The user answers with a number and a letter, e.g. `2.b` or `2b`
-   (a number alone = the whole island).
-2. Record it under Course changes: where we were, where we go back to, why.
-3. Move `⛵` to that block. Reread only its section — in archive.md if its island is compacted.
-4. Explain it again, then the check-understanding loop (restate · recap · revisit?).
-5. When the user says to carry on, move `⛵` back to the spot recorded in step 2.
+1. Run the chart with `--pick` and paste it as is. The user answers with a place and a reason, e.g. `2b code`
+   (a number alone = the whole island). No reason given: ask it in one line.
+2. Move `⛵` to that block and note where we were. Then act on the reason — read only what it needs:
+
+| reason | when | what you do | what it leaves |
+|---|---|---|---|
+| theory | forgotten or not understood | reread the block's notes (archive.md if compacted); explain it differently from the first time; restate loop | the lexicon level, corrected; a second theory return to the same block → rewrite the island summary with the user |
+| code | how it was built | find the block's waypoint commits in the plan; show the key lines; teach what they rest on | nothing to change |
+| decision | doubting a choice | show the decision row: options, choice, why. If the user wants to change it, list what depends on it first | confirmed, or reopened as a course change the user settles |
+| problem | current work shows the block is wrong | check it; the fix becomes a new waypoint | a waypoint added, with its reason |
+| link | how it connects to where we are | show the stretch of pipeline from that block to the current one | nothing to change |
+
+3. Record it in the plan's Going back table: date · from · to · reason · outcome.
+4. Before carrying on, say whether the outcome changes the route. When the user says to carry on, move `⛵` back
+   to where we were.
 
 ## Ending a session
 Everything needed is here — do not open a step file. When the user signals a stop, prepend a fix to log.md from

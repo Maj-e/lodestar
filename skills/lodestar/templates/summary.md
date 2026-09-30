@@ -17,6 +17,11 @@ Stage: Landed
 ## Course changes
 -
 
+## Going back
+<!-- where the voyage was hard: copied from the plan's Going back table -->
+| to | reason | outcome |
+|---|---|---|
+
 ## Learnt
 - <lexicon key> — <level before> → <level after>
 

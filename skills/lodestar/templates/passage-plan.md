@@ -78,6 +78,11 @@ Route approved: no
 | date | change | why |
 |---|---|---|
 
+### Going back
+<!-- reason: theory · code · decision · problem · link -->
+| date | from | to | reason | outcome |
+|---|---|---|---|---|
+
 ### Sighted islands
 <!-- noticed off-route, not handled -->
 -

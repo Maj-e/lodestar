@@ -152,7 +152,7 @@ def pick_list(islands, cur):
         lines.append(f"  {i + 1}  {isl['nature']} {isl['full']}")
         for j, s in enumerate(isl["subs"]):
             lines.append(f"       {chr(97 + j)}  {s['full']}")
-    return lines
+    return lines + ["", "Answer with a place and a reason, e.g. \"2b code\" — theory · code · decision · problem · link"]
 
 
 if __name__ == "__main__":

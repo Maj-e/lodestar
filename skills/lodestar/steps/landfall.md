@@ -10,7 +10,7 @@ Hand over the list for the user to decide, item by item: new ticket · drop.
 
 ### 4c. Summary
 Write `summary.md` from templates/summary.md — how the voyage went, not how the system works (that is the docs'
-job): heading, islands and the user's summaries, decisions with the options set aside and why, course changes,
+job): heading, islands and the user's summaries, decisions with the options set aside and why, course changes, the going-back table,
 concepts learnt. Then ask the user for their own lines. Gate: no landing without them.
 
 ### 4d. Compact
