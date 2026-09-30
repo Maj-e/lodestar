@@ -3,6 +3,8 @@
 
     map.py <passage-plan.md>            the boat on the current spot (end of session)
     map.py <passage-plan.md> --transit  the boat on the route after the last finished island (island change)
+    map.py <passage-plan.md> --pick     the chart, then every island reached so far, numbered, with its blocks
+                                        lettered — the user answers "2.b" to go back there
 
 Reads only the plan's `- Goal` line and its "Archipelago map" section. A checklist line is `- [x] <nature emoji> <name> · …`; indented ones are sub-blocks.
 `⛵` on exactly one line marks where we are. No dependency beyond the standard library.
@@ -51,8 +53,9 @@ def parse(path):
         here = BOAT in rest
         rest = rest.replace(BOAT, "").split(" · ")[0].split(" — ")[0].strip()
         nature = next((e for e in NATURES if rest.startswith(e)), "")
-        name = cut(rest[len(nature):].strip())
-        item = {"done": done in "xX", "here": here, "nature": nature, "name": name, "subs": []}
+        full = rest[len(nature):].strip()
+        name = cut(full)
+        item = {"full": full, "done": done in "xX", "here": here, "nature": nature, "name": name, "subs": []}
         if indent and islands:
             islands[-1]["subs"].append(item)
         elif not indent:
@@ -116,6 +119,7 @@ def main(argv):
         print(__doc__.strip())
         return 1
     transit = "--transit" in argv
+    pick = "--pick" in argv
     goal, islands = parse(argv[1])
     if not islands:
         print("(no chart yet)")
@@ -134,8 +138,21 @@ def main(argv):
         stem = (cur - start) if not transit and cur is not None and start <= cur < start + len(chunk) else None
         subs = chunk[stem]["subs"] if stem is not None else []
         lines += draw_band(labels, boat_on_slope, stem, subs) + [""]
+    if pick:
+        lines = [l.rstrip() for l in "\n".join(lines).rstrip().splitlines()] + [""] + pick_list(islands, cur)
     print("\n".join(lines).rstrip())
     return 0
+
+
+def pick_list(islands, cur):
+    """Islands reached so far (done, or the current one), numbered; their sub-blocks lettered."""
+    lines = ["Go back to:"]
+    last = cur if cur is not None else max((i for i, isl in enumerate(islands) if isl["done"]), default=-1)
+    for i, isl in enumerate(islands[:last + 1]):
+        lines.append(f"  {i + 1}  {isl['nature']} {isl['full']}")
+        for j, s in enumerate(isl["subs"]):
+            lines.append(f"       {chr(97 + j)}  {s['full']}")
+    return lines
 
 
 if __name__ == "__main__":

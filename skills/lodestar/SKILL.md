@@ -81,6 +81,15 @@ Paste its output as is, in a code block, with no comment — never draw or re-al
 Show it twice, and only then: on an island change (`--transit`: the boat on the route) and when a session ends
 (no flag: the boat on the current block).
 
+## Going back
+When the user wants to revisit something already covered:
+1. Run the chart with `--pick` and paste it as is. The user answers with a number and a letter, e.g. `2.b` or `2b`
+   (a number alone = the whole island).
+2. Record it under Course changes: where we were, where we go back to, why.
+3. Move `⛵` to that block. Reread only its section — in archive.md if its island is compacted.
+4. Explain it again, then the check-understanding loop (restate · recap · revisit?).
+5. When the user says to carry on, move `⛵` back to the spot recorded in step 2.
+
 ## Ending a session
 Everything needed is here — do not open a step file. When the user signals a stop, prepend a fix to log.md from
 templates/log.md: what was done, exactly where we stopped (even mid-island or mid-waypoint), the next action, what
