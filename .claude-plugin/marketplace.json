@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "lodestar",
+  "description": "Plan-first, multi-session feature workflow that teaches as it goes.",
+  "owner": {
+    "name": "Maj-e"
+  },
+  "plugins": [
+    {
+      "name": "lodestar",
+      "description": "Log. Pose. Sail. — understand, chart the route, then build, one ticket at a time.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

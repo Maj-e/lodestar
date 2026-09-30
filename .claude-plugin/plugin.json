@@ -1,0 +1,12 @@
+{
+  "name": "lodestar",
+  "version": "0.1.0",
+  "description": "Plan-first, multi-session feature workflow for Claude Code that teaches the fundamentals as it goes.",
+  "author": {
+    "name": "Maj-e",
+    "url": "https://github.com/Maj-e"
+  },
+  "homepage": "https://github.com/Maj-e/Lodestar",
+  "repository": "https://github.com/Maj-e/Lodestar",
+  "keywords": ["workflow", "planning", "learning", "multi-session", "skills"]
+}
