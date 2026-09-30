@@ -112,3 +112,7 @@ Version 0.1 — used by its author, tested on a handful of scenarios. Planned ne
 island from an interactive menu, with the map following the cursor.
 
 Feedback is welcome in the issues.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

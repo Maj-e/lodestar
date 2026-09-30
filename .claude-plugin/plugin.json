@@ -8,5 +8,12 @@
   },
   "homepage": "https://github.com/Maj-e/Lodestar",
   "repository": "https://github.com/Maj-e/Lodestar",
-  "keywords": ["workflow", "planning", "learning", "multi-session", "skills"]
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "planning",
+    "learning",
+    "multi-session",
+    "skills"
+  ]
 }
