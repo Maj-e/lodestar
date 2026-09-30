@@ -36,6 +36,16 @@ which may hold their own. Every island states, in one sentence, how it serves th
 is out of scope — move it to the scope table with its ticket. Write the map as a nested list in passage-plan.md
 before studying anything, in the template's shape: each island opens with its nature (🏝️ ordinary · 🌋 irreversible ·
 🏰 security · 🌫️ open questions), and `⛵` moves to the block being studied — on exactly one line.
+Show the proposed map to the user in this shape — each island its own paragraph, one block per line, a blank line
+after an island's last block (a numbered list collapses those blank lines, so do not use one):
+```
+**1 · 🏝️ <island>** — <how it serves the heading>
+- <block>
+- <block>
+
+**2 · 🌋 <island>** (irreversible) — <how it serves the heading>
+- <block>
+```
 
 **One concept per message.** Never explain several concepts in one block. You may first list the topics
 ahead (titles only, no explanation), then explain ONE, small and plain, and stop.
