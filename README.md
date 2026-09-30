@@ -23,7 +23,7 @@ Everything is written to small files, so a voyage can span many sessions and eac
 **As a plugin** (recommended — you get updates):
 
 ```
-/plugin marketplace add Maj-e/Lodestar
+/plugin marketplace add Maj-e/lodestar
 /plugin install lodestar@lodestar
 ```
 
