@@ -1,6 +1,6 @@
 # Passage plan — <feature>
 
-Stage: Log | Pose | Sail | Landfall
+Stage: Log | Plot | Sail | Landfall
 Route approved: no
 
 ## 1. Log
@@ -20,10 +20,10 @@ Route approved: no
 |---|---|---|---|
 
 ### Archipelago map
-<!-- Read by scripts/map.py — keep the shape. [x] understood · [ ] not yet · ⛵ on ONE line = where we are.
+<!-- Read by scripts/map.py — keep the shape. [x] understood · [ ] not yet · 📍 on ONE line = where we are (⛵ from Sail on).
      Nature, first on each island line: 🏝️ ordinary · 🌋 irreversible · 🏰 security · 🌫️ open questions -->
 - [ ] 🏝️ <name> · serves the heading by: <one sentence>
-  - [ ] <sub-block name> ⛵
+  - [ ] <sub-block name> 📍
 - [ ] 🌋 <name> · serves the heading by: <one sentence>
 
 ### Theory notes
@@ -36,7 +36,7 @@ Route approved: no
 | question | who can answer | what it blocks |
 |---|---|---|
 
-## 2. Pose
+## 2. Plot
 
 ### Precedent
 - <feature> — `file:line` · conventions to copy:

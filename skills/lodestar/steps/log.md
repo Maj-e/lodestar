@@ -35,7 +35,8 @@ schedule of its own.
 which may hold their own. Every island states, in one sentence, how it serves the heading; an island that cannot
 is out of scope — move it to the scope table with its ticket. Write the map as a nested list in passage-plan.md
 before studying anything, in the template's shape: each island opens with its nature (🏝️ ordinary · 🌋 irreversible ·
-🏰 security · 🌫️ open questions), and `⛵` moves to the block being studied — on exactly one line.
+🏰 security · 🌫️ open questions), and the pin `📍` moves to the block being studied — on exactly one line.
+The boat `⛵` only appears from Sail on: until the route is approved nobody sails, we point at the chart.
 Show the proposed map to the user in this shape — each island its own paragraph, one block per line, a blank line
 after an island's last block (a numbered list collapses those blank lines, so do not use one):
 ```
@@ -65,15 +66,18 @@ bring its answer in when it arrives, marked ✔ only for what it quotes.
 **After EVERY block — never propose moving on:**
 1. Check understanding: ask the user to restate it in their own words; then ask questions only on what the
    restatement missed or got wrong.
-2. Recap: list every block covered so far, marked on the map (✓ understood · ⛵ current).
+2. Recap: list every block covered so far, marked on the map (✓ understood · 📍 current).
 3. Ask whether they want to revisit any of them.
 Move on only when the user says so. The user sets the pace, not you.
 
 **Island summary, then compaction.** When an island is fully ✓:
 1. The USER writes 3 lines under it in passage-plan.md: what it does · why · what is dangerous.
+   Do not hand over three empty lines: recall the island's theme and its blocks in one line, then put a real
+   question on each line, worded for this island ("what does this part do?", "why is it built this way?",
+   "what can go wrong here?").
 2. Move that island's theory notes to archive.md (under a heading with the island's name). In passage-plan.md,
-   keep the map line, the user's summary, and the anchors (file:line) the Pose step will need.
-3. Tick the island, move `⛵` to the next island's first block, and show the chart with the boat under way
+   keep the map line, the user's summary, and the anchors (file:line) the Plot step will need.
+3. Tick the island, move `📍` to the next island's first block, and show the chart with the pin on the route
    (SKILL.md, The chart, `--transit`). The chart IS the recap at an island's end — do not also list the blocks.
 
-GATE: Pose starts only when every block on the map is ✓. Then set `Stage: Pose` and read `steps/pose.md`.
+GATE: Plot starts only when every block on the map is ✓. Then set `Stage: Plot` and read `steps/plot.md`.

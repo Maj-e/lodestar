@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Draw a voyage's chart as a horizontal zigzag, from its passage-plan.md.
 
-    map.py <passage-plan.md>            the boat on the current spot (end of session)
-    map.py <passage-plan.md> --transit  the boat on the route after the last finished island (island change)
+    map.py <passage-plan.md>            the marker on the current spot (end of session)
+    map.py <passage-plan.md> --transit  the marker on the route after the last finished island (island change)
     map.py <passage-plan.md> --pick     the chart, then every island reached so far, numbered, with its blocks
                                         lettered — the user answers "2.b" to go back there
 
 Reads only the plan's `- Goal` line and its "Archipelago map" section. A checklist line is `- [x] <nature emoji> <name> · …`; indented ones are sub-blocks.
-`⛵` on exactly one line marks where we are. No dependency beyond the standard library.
+One marker on exactly one line says where we are: `📍` while the route is studied and plotted (Stage: Log or
+Plot), `⛵` once we sail. Either is read in the plan; the one drawn follows the `Stage:` line. Standard library only.
 """
 import re
 import sys
@@ -17,6 +18,8 @@ SLOPE = 3            # rows between the two lines of islands
 BAND = 6             # islands per zigzag band; a longer voyage wraps onto a new band
 NAME_MAX = 18        # longer names are cut with …
 BOAT = "⛵"
+PIN = "📍"          # drawn instead of the boat while Stage is Log or Plot: nobody sails yet, we point at the chart
+MARKS = (BOAT, PIN)
 NATURES = ("🏝️", "🌋", "🏰", "🌫️")
 CHECK = re.compile(r"^(\s*)- \[([ xX])\] (.*)$")
 
@@ -40,6 +43,8 @@ def parse(path):
     text = open(path, encoding="utf-8").read()
     goal = re.search(r"^- Goal \(one sentence\):[ \t]*(.*)$", text, re.M)
     goal = goal.group(1).strip() if goal else ""
+    stage = re.search(r"^Stage:\s*(\w+)", text, re.M)
+    mark = PIN if stage and stage.group(1) in ("Log", "Plot") else BOAT
     heading = "### Archipelago map"
     section = text.split(heading, 1)[1] if heading in text else ""
     section = re.split(r"^#{1,3} ", section, maxsplit=1, flags=re.M)[0]
@@ -50,8 +55,10 @@ def parse(path):
         if not m:
             continue
         indent, done, rest = m.groups()
-        here = BOAT in rest
-        rest = rest.replace(BOAT, "").split(" · ")[0].split(" — ")[0].strip()
+        here = any(m in rest for m in MARKS)
+        for m in MARKS:
+            rest = rest.replace(m, "")
+        rest = rest.split(" · ")[0].split(" — ")[0].strip()
         nature = next((e for e in NATURES if rest.startswith(e)), "")
         full = rest[len(nature):].strip()
         name = cut(full)
@@ -60,7 +67,7 @@ def parse(path):
             islands[-1]["subs"].append(item)
         elif not indent:
             islands.append(item)
-    return goal, islands
+    return goal, islands, mark
 
 
 def current_index(islands):
@@ -70,7 +77,7 @@ def current_index(islands):
     return None
 
 
-def draw_band(labels, boat_on_slope, stem_island, subs):
+def draw_band(labels, boat_on_slope, stem_island, subs, here_mark=BOAT):
     """labels: texts left to right, alternating bottom/top. Returns the band's lines."""
     height = SLOPE + 2
     rows = [{} for _ in range(height + len(subs))]
@@ -86,7 +93,7 @@ def draw_band(labels, boat_on_slope, stem_island, subs):
         for k in range(SLOPE):
             boat = i == boat_on_slope and k == SLOPE // 2
             col = end + 1 + k - (1 if boat else 0)
-            ch = BOAT if boat else ("╲" if top else "╱")
+            ch = here_mark if boat else ("╲" if top else "╱")
             rows[1 + k if top else height - 2 - k][col] = ch
         x, top = end + 1 + SLOPE, not top
     if stem_col is not None and subs:
@@ -94,7 +101,7 @@ def draw_band(labels, boat_on_slope, stem_island, subs):
             for r in range(1, height):
                 rows[r][stem_col] = "│"
         for j, s in enumerate(subs):
-            mark = BOAT if s["here"] else ("✓" if s["done"] else "○")
+            mark = here_mark if s["here"] else ("✓" if s["done"] else "○")
             branch = "└ " if j == len(subs) - 1 else "├ "
             rows[height + j][stem_col] = branch + mark + " " * (2 - width(mark)) + " " + s["name"]
     out = []
@@ -107,10 +114,10 @@ def draw_band(labels, boat_on_slope, stem_island, subs):
     return out
 
 
-def label(isl, cur, i, transit):
+def label(isl, cur, i, transit, here_mark=BOAT):
     mark = "✓" if isl["done"] else ""
     if not transit and i == cur and not isl["subs"]:
-        mark = BOAT
+        mark = here_mark
     return f"{mark}{isl['nature']} {isl['name']}".replace("  ", " ").strip()
 
 
@@ -120,7 +127,7 @@ def main(argv):
         return 1
     transit = "--transit" in argv
     pick = "--pick" in argv
-    goal, islands = parse(argv[1])
+    goal, islands, here_mark = parse(argv[1])
     if not islands:
         print("(no chart yet)")
         return 0
@@ -132,12 +139,12 @@ def main(argv):
     for start in range(0, len(islands), BAND):
         chunk = islands[start:start + BAND]
         last_band = start + BAND >= len(islands)
-        labels = [label(isl, cur, start + j, transit) for j, isl in enumerate(chunk)]
+        labels = [label(isl, cur, start + j, transit, here_mark) for j, isl in enumerate(chunk)]
         labels.append("⭐" if last_band else "↴")
         boat_on_slope = (leaving - start) if transit and start <= leaving < start + len(chunk) else None
         stem = (cur - start) if not transit and cur is not None and start <= cur < start + len(chunk) else None
         subs = chunk[stem]["subs"] if stem is not None else []
-        lines += draw_band(labels, boat_on_slope, stem, subs) + [""]
+        lines += draw_band(labels, boat_on_slope, stem, subs, here_mark) + [""]
     if pick:
         lines = [l.rstrip() for l in "\n".join(lines).rstrip().splitlines()] + [""] + pick_list(islands, cur)
     print("\n".join(lines).rstrip())

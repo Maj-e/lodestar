@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "lodestar",
-      "description": "Log. Pose. Sail. — understand, chart the route, then build, one ticket at a time.",
+      "description": "Log. Plot. Sail. — understand, chart the route, then build, one ticket at a time.",
       "source": "./",
       "category": "productivity"
     }

@@ -1,6 +1,6 @@
 # Lodestar
 
-**Log. Pose. Sail.** — a Claude Code skill for working through tickets the way a careful navigator crosses a sea:
+**Log. Plot. Sail.** — a Claude Code skill for working through tickets the way a careful navigator crosses a sea:
 understand where you are, chart the whole route, then sail it one waypoint at a time.
 
 Lodestar is for developers who want to **understand the fundamentals of what gets built**, not just get code. Claude
@@ -55,7 +55,7 @@ through the same four stages, and **you** open every gate.
    your lexicon for the concepts it needs. Then study island by island: one concept per message, every claim
    anchored to a `file:line` and marked ✔ verified or ≈ assumed. After each block you restate it; Claude only moves
    on when you say so. At the end of an island, you write its three-line summary.
-2. **Pose — chart the route.** Draw the **pipeline** first: where each piece of information starts, every stage it
+2. **Plot — chart the route.** Draw the **pipeline** first: where each piece of information starts, every stage it
    passes through, and who it serves at the end. Then the blocks, every decision (irreversible ones first), the
    waypoints — one waypoint, one commit — and the risks. A fresh reviewer reads the route for gaps. Nothing is
    built until you write **"approved"**.
@@ -72,7 +72,7 @@ Fresh agents with no memory of the conversation, sent only where a new pair of e
 | agent | when | job |
 |---|---|---|
 | researcher | Log | answers a documentation question from primary sources, in the background |
-| route reviewer | Pose | finds the gaps in the route before you approve it |
+| route reviewer | Plot | finds the gaps in the route before you approve it |
 | shipwright | Sail | builds one waypoint; never commits |
 | island reviewer | Sail | reviews an island's code against the plan |
 | landfall check | Landfall | runs the suite, checks "done when", scope and docs anchors |
@@ -104,7 +104,7 @@ line points to where you learnt it; the explanation itself stays there.
 
 ## Map legend
 
-`🏝️` ordinary island · `🌋` irreversible · `🏰` security · `🌫️` open questions · `✓` done · `⛵` you are here ·
+`🏝️` ordinary island · `🌋` irreversible · `🏰` security · `🌫️` open questions · `✓` done · `📍` you are here while planning, `⛵` once you sail ·
 `⭐` landfall
 
 ## Status

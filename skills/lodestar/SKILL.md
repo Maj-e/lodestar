@@ -7,7 +7,7 @@ argument-hint: <feature name>
 
 # lodestar
 
-Motto: **Log. Pose. Sail.** — note where you are, stop to chart the route, then sail.
+Motto: **Log. Plot. Sail.** — note where you are, plot the route, then sail.
 The goal is that the user understands the fundamentals of what gets built — not that they type it.
 
 | file | what it holds |
@@ -24,7 +24,7 @@ Three levels: **the sea** is every ticket of the project · **a voyage** is one 
 
 ## Read only what the moment needs
 
-- Load ONE step file at a time, per the plan's `Stage:` line: `steps/log.md` · `steps/pose.md` · `steps/sail.md`
+- Load ONE step file at a time, per the plan's `Stage:` line: `steps/log.md` · `steps/plot.md` · `steps/sail.md`
   · `steps/landfall.md`.
 - State files grow every session, so read them by section, not whole: `grep -n '^#' <file>` to find the
   headings, then read only the line range you need. A file under ~100 lines is cheaper to read whole than to
@@ -57,8 +57,8 @@ In a few lines: stage and position on the map, what happened last session, open 
 the next action. Refresh only the current block: reread its island summary or notes, not the others. Then wait.
 
 ## Gates — never crossed without the user
-- Log → Pose: every block on the map is ✓.
-- Pose → Sail: the user wrote "approved" in answer to the full route. No code file is edited before that word.
+- Log → Plot: every block on the map is ✓.
+- Plot → Sail: the user wrote "approved" in answer to the full route. No code file is edited before that word.
 - Waypoint → next waypoint: the user says so.
 - Landfall → Landed: the user has added their lines to summary.md.
 
@@ -70,7 +70,7 @@ the conversation. Show its report as is, then settle its findings with the user 
 | agent | when | file |
 |---|---|---|
 | researcher | Log: an open question the documentation can settle — runs in the background | `agents/researcher.md` |
-| route reviewer | Pose: before asking for "approved" | `agents/route-reviewer.md` |
+| route reviewer | Plot: before asking for "approved" | `agents/route-reviewer.md` |
 | shipwright | Sail: writes each waypoint's code; never commits | `agents/shipwright.md` |
 | island reviewer | Sail: when every waypoint of an island is done | `agents/island-reviewer.md` |
 | landfall check | Landfall: before the summary | `agents/landfall-check.md` |
@@ -78,14 +78,16 @@ the conversation. Show its report as is, then settle its findings with the user 
 ## The chart
 `python3 <this skill>/scripts/map.py .claude/lodestar/<feature>/passage-plan.md [--transit]` draws the voyage.
 Paste its output as is, in a code block, with no comment — never draw or re-align it yourself.
-Show it twice, and only then: on an island change (`--transit`: the boat on the route) and when a session ends
-(no flag: the boat on the current block).
+Show it twice, and only then: on an island change (`--transit`: the marker on the route) and when a session ends
+(no flag: the marker on the current block).
+The marker is the pin `📍` while the route is studied and plotted (Stage: Log or Plot) and the boat `⛵` from Sail
+on. Write it on exactly one map line of the plan; the script reads either and draws the one the `Stage:` line calls for.
 
 ## Going back
 When the user wants to revisit something already covered:
 1. Run the chart with `--pick` and paste it as is. The user answers with a place and a reason, e.g. `2b code`
    (a number alone = the whole island). No reason given: ask it in one line.
-2. Move `⛵` to that block and note where we were. Then act on the reason — read only what it needs:
+2. Move the marker (`📍` or `⛵`) to that block and note where we were. Then act on the reason — read only what it needs:
 
 | reason | when | what you do | what it leaves |
 |---|---|---|---|
@@ -96,11 +98,11 @@ When the user wants to revisit something already covered:
 | link | how it connects to where we are | show the stretch of pipeline from that block to the current one | nothing to change |
 
 3. Record it in the plan's Going back table: date · from · to · reason · outcome.
-4. Before carrying on, say whether the outcome changes the route. When the user says to carry on, move `⛵` back
+4. Before carrying on, say whether the outcome changes the route. When the user says to carry on, move the marker back
    to where we were.
 
 ## Ending a session
 Everything needed is here — do not open a step file. When the user signals a stop, prepend a fix to log.md from
 templates/log.md: what was done, exactly where we stopped (even mid-island or mid-waypoint), the next action, what
-waits on whom. Check `⛵` sits on that spot in the plan, then show the chart.
+waits on whom. Check the marker sits on that spot in the plan, then show the chart.
 If log.md holds more than 5 fixes, move the oldest ones to archive.md.

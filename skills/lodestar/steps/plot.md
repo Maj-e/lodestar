@@ -1,4 +1,4 @@
-# 2. Pose — chart the route
+# 2. Plot — chart the route
 
 ### 2a. Precedent
 Find the closest existing feature in the codebase. Name it (file:line) and list the conventions to copy:
@@ -52,4 +52,4 @@ If the route changes a screen noticeably, show a mockup before any code (tool an
 4. Send the route reviewer (SKILL.md, The crew). Settle each finding with the user, one at a time.
 
 GATE: show the full route; the user writes "approved". No code file is edited before that word.
-Then set `Route approved: yes`, `Stage: Sail`, and read `steps/sail.md`.
+Then set `Route approved: yes`, `Stage: Sail`, replace the pin `📍` with the boat `⛵` on the map, and read `steps/sail.md`.
