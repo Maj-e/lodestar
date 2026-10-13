@@ -41,8 +41,9 @@ def cut(name):
 
 def parse(path):
     text = open(path, encoding="utf-8").read()
-    goal = re.search(r"^- Goal \(one sentence\):[ \t]*(.*)$", text, re.M)
-    goal = goal.group(1).strip() if goal else ""
+    # the goal may wrap: its indented continuation lines belong to it, up to the next list item
+    goal = re.search(r"^- Goal \(one sentence\):[ \t]*(.*(?:\n[ \t]+(?!- )\S.*)*)", text, re.M)
+    goal = " ".join(goal.group(1).split()) if goal else ""
     stage = re.search(r"^Stage:\s*(\w+)", text, re.M)
     mark = PIN if stage and stage.group(1) in ("Log", "Plot") else BOAT
     heading = "### Archipelago map"

@@ -5,7 +5,7 @@ an answer (a TODO file, a test command in the README), offer it as a suggestion 
 When it shows nothing, say so and ask the question open — a guess dressed as a suggestion gets confirmed out of
 politeness and then misleads every voyage after it.
 
-1. **Tickets** — where is the source of truth for a feature (issue tracker, TODO file, spec folder)?
+1. **Tickets** — where is it written what a ticket asks for (issue tracker, TODO file, spec folder)?
    How is one ticket identified and quoted?
 2. **Backlog** — is there a full list of tickets to read, to avoid redundancy with neighbouring work?
    Where? If none, write "none": the Scope step will then say that redundancy was not checked.

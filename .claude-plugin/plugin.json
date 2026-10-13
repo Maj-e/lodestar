@@ -1,6 +1,6 @@
 {
   "name": "lodestar",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Plan-first, multi-session feature workflow for Claude Code that teaches the fundamentals as it goes.",
   "author": {
     "name": "Maj-e",

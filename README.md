@@ -46,22 +46,33 @@ when you describe a new ticket, Claude offers it in one line.
 The first time in a project, Claude asks a few questions — where tickets live, how to run tests, what must never be
 touched, where the docs are — and saves the answers in `.claude/lodestar.md`. Edit that file whenever you like.
 
-## The voyage
+## How it works
 
-A **voyage** is one ticket. Its blocks are **islands**; a small ticket is a one-island voyage. Every voyage goes
-through the same four stages, and **you** open every gate.
+Every ticket goes through the same four stages, and **you** open every gate. The skill names things after a sea
+crossing; here is what each word means:
 
-1. **Log — know where you sail.** Quote the ticket, write the goal in one sentence, sort what is in scope. Check
-   your lexicon for the concepts it needs. Then study island by island: one concept per message, every claim
-   anchored to a `file:line` and marked ✔ verified or ≈ assumed. After each block you restate it; Claude only moves
-   on when you say so. At the end of an island, you write its three-line summary.
-2. **Plot — chart the route.** Draw the **pipeline** first: where each piece of information starts, every stage it
-   passes through, and who it serves at the end. Then the blocks, every decision (irreversible ones first), the
-   waypoints — one waypoint, one commit — and the risks. A fresh reviewer reads the route for gaps. Nothing is
-   built until you write **"approved"**.
-3. **Sail — one waypoint at a time.** A builder agent writes the waypoint's code and runs its test; Claude reads
-   the diff and teaches you what it rests on. Anything off-route is written down, never handled on the way.
-   At the end of each island, a fresh reviewer reads its code.
+| word | plain meaning |
+|---|---|
+| the sea | every ticket of the project |
+| a voyage | one ticket, one problem to solve |
+| an island · a town | a block of that ticket · a smaller part of that block |
+| a waypoint | one step of the build, one commit |
+| the fix | the saved position: where you stopped, and what comes next |
+| 📍 · ⛵ | where you are while surveying and charting · from the first island on |
+
+1. **Log — survey the whole voyage.** Quote the ticket, write the goal in one sentence, sort what is in scope.
+   Map the islands, then look at each one briefly: what it touches, what depends on it, whether it is
+   irreversible, what questions it raises. No deep study yet. You restate the map once, at the end.
+2. **Plot — chart what crosses islands.** Draw the **pipeline** first: where each piece of information starts,
+   every stage it passes through, and who it serves at the end. Then settle only the decisions that more than one
+   island rests on, irreversible ones first, and the order of the islands. A fresh reviewer reads the chart for
+   gaps. You write **"approved"**.
+3. **Sail — island by island.** For each island: **study** it — Claude checks your lexicon for its concepts, explains
+   one concept per message, every claim anchored to a `file:line` and marked ✔ verified or ≈ assumed, and you
+   restate each block. Then its **waypoints** — one waypoint, one commit — and its own decisions; nothing of the
+   island is built until you write **"approved"** again. Then **build**: a builder agent writes each waypoint's
+   code and runs its test; Claude reads the diff and teaches you what it rests on. A fresh reviewer reads the
+   island's code, and you write its three-line summary before the next island.
 4. **Landfall — close the voyage.** A last check runs the full suite and tests the "done when" line. The docs page
    is updated with verified claims only. Claude writes a summary of how the voyage went; you add your own lines.
 
@@ -104,12 +115,13 @@ line points to where you learnt it; the explanation itself stays there.
 
 ## Map legend
 
-`🏝️` ordinary island · `🌋` irreversible · `🏰` security · `🌫️` open questions · `✓` done · `📍` you are here while planning, `⛵` once you sail ·
+`🏝️` ordinary island · `🌋` irreversible · `🏰` security · `🌫️` open questions · `✓` done · `📍` you are here while surveying and charting, `⛵` once you sail ·
 `⭐` landfall
 
 ## Status
 
-Version 0.1 — used by its author, tested on a handful of scenarios. Planned next: an interactive menu for going
+Version 0.2 — used by its author, tested on a handful of scenarios. 0.2 changes the passage plan's shape (the voyage
+is studied and built island by island): a voyage started with 0.1 needs its plan converted before it resumes. Planned next: an interactive menu for going
 back, with the map following the cursor.
 
 Feedback is welcome in the issues.

@@ -1,3 +1,11 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Personal and local — never part of the skill
+.claude/
+.env
+.env.*
+*.local.*
+feedback.md
+*.orig

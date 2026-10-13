@@ -1,6 +1,6 @@
 # Log — <feature>
 
-<!-- One fix per session, newest at the top. Read the top entry to resume. -->
+<!-- One fix per session, newest at the top, rewritten after each block. Read the top entry to resume. -->
 
 ## <YYYY-MM-DD> — <stage> · <position on the map>
 - Done:
