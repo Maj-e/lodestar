@@ -61,6 +61,9 @@ New voyage: create its folder from templates/, then read `steps/log.md`.
 Before telling anything, compare the top fix of log.md with reality:
 - the current branch is the plan's `Branch:` line, and is not behind the main branch
   (`git rev-list --count HEAD..<main branch>`);
+- the base branch's own CI is green (e.g. `gh run list --branch <base> --limit 5`). Tests already red there go in
+  the fix as inherited red, so they are never blamed on the voyage. Check again before merging the base into the
+  voyage's branch: a red base turns every check of the voyage red;
 - the last commit matches the last ticked waypoint;
 - uncommitted changes.
 If they disagree, report it FIRST and let the user decide — before reading the ticket or any code.
@@ -89,6 +92,7 @@ the conversation. Show its report as is, then settle its findings with the user 
 | route reviewer | Plot: before asking for the voyage's "approved" | `agents/route-reviewer.md` |
 | shipwright | Sail: writes each waypoint's code; never commits | `agents/shipwright.md` |
 | island reviewer | Sail: when every waypoint of an island is done | `agents/island-reviewer.md` |
+| red team | 🏰 islands only — Plot, on the design · Sail, when the island's waypoints are done, on its code | `agents/red-team.md` |
 | landfall check | Landfall: before the summary | `agents/landfall-check.md` |
 
 ## The chart

@@ -86,7 +86,8 @@ Fresh agents with no memory of the conversation, sent only where a new pair of e
 | route reviewer | Plot | finds the gaps in the route before you approve it |
 | shipwright | Sail | builds one waypoint; never commits |
 | island reviewer | Sail | reviews an island's code against the plan |
-| landfall check | Landfall | runs the suite, checks "done when", scope and docs anchors |
+| red team | Plot · Sail | 🏰 islands only: attacks the design, then the code, from the threat model; each attack comes with the test that proves it |
+| landfall check | Landfall | runs the suite, checks "done when", scope, docs anchors, and that every security promise has a test |
 
 ## Files it writes
 

@@ -14,7 +14,8 @@ Each island runs the same three phases, named on the plan's `Island phase:` line
    - serves: the block it builds — where ⛵ sits during this waypoint
    - files touched (open each file in one waypoint where possible)
    - test: test-first ONLY for claims you cannot otherwise see (security, immutability, concurrency, data migration);
-     otherwise the suite runs once at the end of the waypoint
+     otherwise the suite runs once at the end of the waypoint. On a 🏰 island, every attack kept from the red team
+     is one such test: written first, as the attacker, and failing before the code
    - "reached when": the concrete proof
    On the last island, when the project rules name a Docs place, the LAST waypoint updates it: a page built from the
    Architecture section (pipeline, blocks, decisions and why). Only ✔ claims go there — verify an ≈ claim first or
@@ -52,6 +53,9 @@ check-understanding loop (restate · recap · revisit?). Update the lexicon for 
 
 ### 3g. Log the waypoint
 1. Proof: the test output as is, from the shipwright's report or a rerun. No "should work".
+   A test that fails: first check whether it fails the same way on the base branch (its CI, or the fix's
+   inherited red). If it does, it is not this waypoint's — write it under Sighted islands and carry on. If it does
+   not, find the cause before touching code: read the error and the code it points to; never retry blindly.
 2. List what the user should reread themselves.
 3. Tick the waypoint, write its commit line, update the fix in log.md (SKILL.md, Keeping the fix current), THEN
    commit — the chart is updated before the commit, never after.
@@ -61,6 +65,8 @@ Move to the next waypoint only when the user says so.
 When every waypoint of the island is ticked:
 1. Send the island reviewer (SKILL.md, The crew) with the island's diff (from its first waypoint's parent commit to
    HEAD) and its part of the route. Settle its findings with the user; a fix becomes a waypoint of its own.
+   A 🏰 island also gets the red team in `code` mode, same diff, with its threat model. An attack that holds
+   becomes a waypoint (its test first); one marked `predates` goes to Sighted islands.
 2. The USER writes 3 lines under the island in passage-plan.md: what it does · why · what is dangerous.
    Do not hand over three empty lines: recall the island's theme and its blocks in one line, then put a real
    question on each line, worded for this island ("what does this part do?", "why is it built this way?",

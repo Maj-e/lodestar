@@ -3,7 +3,11 @@
 ### 4a. Check
 Send the landfall check (SKILL.md, The crew) with: the heading and "done when" lines, the scope table, the project
 rules' full-suite command, the full diff range, and the docs page if one was written. Show its report as is.
-A failure becomes a waypoint: set `Stage: Sail` and fix it there.
+A failure becomes a waypoint: set `Stage: Sail` and fix it there. A suite failure that is already in the fix's
+inherited red is reported as such, not as a failure of the voyage.
+A voyage with a 🏰 island: when a security scanner is installed (for instance the `claude-security` plugin's scan
+of changes), offer it on the full diff — it hunts classic code flaws, where the red team attacks the threat
+model. It runs only on the user's word: it costs time and tokens.
 
 ### 4b. Sighted islands
 Hand over the list for the user to decide, item by item: new ticket · drop.

@@ -7,3 +7,4 @@
 - Stopped at: <exact spot, even mid-island or mid-waypoint>
 - Next action:
 - Waiting on: <open questions and who>
+- Inherited red: <tests already failing on the base branch, with the run that shows it — or "none">

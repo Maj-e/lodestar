@@ -20,6 +20,14 @@ Then the blocks: each new or modified block, its role in one sentence, what it r
 has this shape rather than another. Mark every claim ✔ verified or ≈ assumed.
 One block per message; after each, check understanding: the user restates it, ask only about what was missed.
 
+**Threat model — every 🏰 island.** Tests only prove what someone thought to write down; a security island also
+needs who it must withstand. With the user, write in passage-plan.md, per 🏰 island:
+- holds against: each attacker profile, named by what they hold (database write, host root, an application
+  account, the network path, a key or not);
+- does not hold against: the profiles left out, each with its reason — an accepted risk, said out loud;
+- guarantees: what the island promises, one line each ("a tampered record is detected").
+Every guarantee the docs will later state must appear here first.
+
 ### 2c. Decisions that cross islands
 List every decision that more than one island rests on, and every irreversible one (data format, migration,
 permission name, published contract) — irreversible first. Every cross-island open question from Log lands here.
@@ -42,6 +50,9 @@ For each known risk: how we would notice it, what we do if it happens.
 2. The user restates the architecture in their own words: where the information starts, where it goes, who it
    serves, and why each island exists. Ask questions only on what the restatement missed.
 3. Send the route reviewer (SKILL.md, The crew). Settle each finding with the user, one at a time.
+4. For each 🏰 island, send the red team in `design` mode with its threat model. Each attack is settled with the
+   user: the design changes, or the attacker moves to "does not hold against" with its reason. Its "Test that
+   proves it" lines are kept under the island: they become its test-first waypoints.
 
 GATE: show the voyage chart; the user writes "approved". No code file is edited before that word — and each island
 will ask for its own "approved" before its code.

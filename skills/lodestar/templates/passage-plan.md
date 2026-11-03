@@ -57,6 +57,11 @@ Branch: <git branch of this voyage>
 
 **Restated by the user:** <where the information starts, where it goes, who it serves, why each block>
 
+### Threat model
+<!-- 🏰 islands only. An attacker is named by what they hold: database write, host root, an account, a key or not. -->
+| island | holds against | does not hold against (why) | guarantees |
+|---|---|---|---|
+
 ### Decisions that cross islands
 | # | decision | options | chosen | why |
 |---|---|---|---|---|
