@@ -25,7 +25,9 @@ needs who it must withstand. With the user, write in passage-plan.md, per 🏰 i
 - holds against: each attacker profile, named by what they hold (database write, host root, an application
   account, the network path, a key or not);
 - does not hold against: the profiles left out, each with its reason — an accepted risk, said out loud;
-- guarantees: what the island promises, one line each ("a tampered record is detected").
+- guarantees: what the island promises, one line each ("a tampered record is detected") — on its results and
+  on its state too ("a proof never disappears", "a counter never goes back"): the red team attacks only what is
+  written here.
 Every guarantee the docs will later state must appear here first.
 
 ### 2c. Decisions that cross islands

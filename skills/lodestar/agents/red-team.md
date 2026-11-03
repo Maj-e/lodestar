@@ -19,6 +19,12 @@ against is out of reach — do not attack through it.
 - Unsigned data that picks the check: a field the attacker can edit decides which verification applies.
 - Rollback: replay an older state that was valid at the time.
 - Check and use apart (TOCTOU), and a lock or a full walk that lets one actor stall everyone else.
+- Downgrade to unproven: for every state the check counts apart without calling it broken (not yet sealed,
+  unverifiable, pending), try to move data that was already proven into it.
+
+**Then ask what the next run does.** After each attack, follow the state into the next scheduled job (sealing,
+sync, cleanup, retry). A job that turns the forgery into proof — signs it, seals it, stamps it — is the most
+serious outcome: say so in the attack.
 
 **In `design` mode** attack the plan: the pipeline, the blocks and their decisions. Cite the plan section an attack
 goes through.
