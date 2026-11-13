@@ -33,7 +33,8 @@ Every guarantee the docs will later state must appear here first.
 ### 2c. Decisions that cross islands
 List every decision that more than one island rests on, and every irreversible one (data format, migration,
 permission name, published contract) — irreversible first. Every cross-island open question from Log lands here.
-Settle them ONE AT A TIME: 2–3 options in plain words, your recommendation, the user's answer.
+Settle them in ONE batch: one numbered list, each with 2–3 options in plain words and your recommendation; the user
+answers in one message ("ok all", or overrides by number). Ask again only on what the answer leaves unclear.
 Record each in passage-plan.md with its reason. A settled decision is not reopened unless the user reopens it.
 A decision that concerns one island only: write it under that island, unsettled — it is taken when the island is.
 
@@ -51,9 +52,9 @@ For each known risk: how we would notice it, what we do if it happens.
    None may cross the gate silently. Questions of a single island wait for it.
 2. The user restates the architecture in their own words: where the information starts, where it goes, who it
    serves, and why each island exists. Ask questions only on what the restatement missed.
-3. Send the route reviewer (SKILL.md, The crew). Settle each finding with the user, one at a time.
+3. Send the route reviewer (SKILL.md, The crew). Settle its findings in one batch, as in 2c.
 4. For each 🏰 island, send the red team in `design` mode with its threat model. Each attack is settled with the
-   user: the design changes, or the attacker moves to "does not hold against" with its reason. Its "Test that
+   user: the design changes, or the attacker moves to "does not hold against" with its reason — one batch, as in 2c. Its "Test that
    proves it" lines are kept under the island: they become its test-first waypoints.
 
 GATE: show the voyage chart; the user writes "approved". No code file is edited before that word — and each island

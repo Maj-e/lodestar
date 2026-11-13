@@ -14,6 +14,10 @@ project's no-go areas.
    of a whole module (`time`, `datetime`, a client library) that also catches calls from third-party code, is a
    test that will break with no change to the code.
 
+6. Dead code: anything this island left unreachable or superseded — functions, branches, settings, templates,
+   tests, imports, fields. Prove each with a search showing no remaining caller (`grep -rn`, including templates,
+   Celery task names, URL names, migrations); a hit you are unsure of is not dead. Report it as `dead · <proof>`.
+
 **Do not** comment on style a formatter would fix, or reopen decisions the plan settled.
 
 **Output:** a numbered list, most serious first — `file:line · finding · failure it causes`. At most 10.

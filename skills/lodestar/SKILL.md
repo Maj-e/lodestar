@@ -78,13 +78,13 @@ the next action. Refresh only the current block: reread its island summary or no
 - Study → Waypoints: every block of the island is ✓.
 - Waypoints → Build: the user wrote "approved" in answer to the island's waypoints. No code file of an island is
   edited before its own "approved".
-- Waypoint → next waypoint, island → next island: the user says so.
+- Island → next island: the user says so. Waypoints of an approved island chain without a stop (steps/sail.md 3g).
 - Landfall → Landed: the user has added their lines to summary.md.
 
 ## The crew
 Fresh agents with no memory of this conversation. Use one only at the moments below — each costs a full cold
 start. Launch it with the Agent tool (general-purpose), its prompt = the agent file + the inputs it lists, never
-the conversation. Show its report as is, then settle its findings with the user one at a time.
+the conversation. Show its report as is, then settle its findings with the user in one batch (steps/plot.md 2c).
 
 | agent | when | file |
 |---|---|---|
@@ -92,7 +92,7 @@ the conversation. Show its report as is, then settle its findings with the user 
 | route reviewer | Plot: before asking for the voyage's "approved" | `agents/route-reviewer.md` |
 | shipwright | Sail: writes each waypoint's code; never commits | `agents/shipwright.md` |
 | island reviewer | Sail: when every waypoint of an island is done | `agents/island-reviewer.md` |
-| red team | 🏰 islands only — Plot, on the design · Sail, when the island's waypoints are done, on its code | `agents/red-team.md` |
+| red team | 🏰 islands — Plot, on the design · Sail, on the code of 🌋 (irreversible) islands only | `agents/red-team.md` |
 | landfall check | Landfall: before the summary | `agents/landfall-check.md` |
 
 ## The chart
@@ -125,10 +125,11 @@ When the user wants to revisit something already covered:
 
 ## Keeping the fix current
 A session can end without warning (crash, full context, closed window), so the fix is not left for the stop.
-Each time a block is done — an island surveyed in Log, a section of Plot finished, a block studied or a waypoint built in Sail — write the
-fix from templates/log.md: what was done, exactly where we are, the next action, what waits on whom.
-The first time in a session, prepend a new fix; after that, rewrite that same fix in place — one fix per session.
-Why per block: the block is the unit of resume, so at worst the block in progress is lost.
+Write the fix from templates/log.md — what was done, exactly where we are, the next action, what waits on whom —
+at an island change, at a stage change, and when the session ends. In between, the plan's ticks and commits are the
+record. The first time in a session, prepend a new fix; after that, rewrite that same fix in place — one fix per session.
+Why not per block: ticks and git already say where we are; a crash loses at most the narrative since the last
+island change, which 0c rebuilds from the ground.
 
 ## Ending a session
 Everything needed is here — do not open a step file. When the user signals a stop, update the session's fix

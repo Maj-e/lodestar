@@ -13,6 +13,8 @@ model. It runs only on the user's word: it costs time and tokens.
 Hand over the list for the user to decide, item by item: new ticket · drop.
 
 ### 4c. Summary
+First the USER writes 3 lines per island: what it does · why · what is dangerous. Do not hand over empty lines:
+recall each island's theme in one line, then a real question per line, worded for that island.
 Write `summary.md` from templates/summary.md — how the voyage went, not how the system works (that is the docs'
 job): heading, islands and the user's summaries, decisions with the options set aside and why, course changes, the going-back table,
 concepts learnt. Then ask the user for their own lines. Gate: no landing without them.

@@ -51,6 +51,6 @@ database, the code that reads them, what the screen shows.
 2. Recap: list every block of the island covered so far (✓ understood · ⛵ current).
 3. Ask whether they want to revisit any of them.
 Move on only when the user says so. The user sets the pace, not you. When the boat moves to the next block, tick the
-one left, update the fix (SKILL.md, Keeping the fix current), then show the chart.
+one left, then show the chart.
 
 GATE: when every block of the island is ✓, set `Island phase: Waypoints` and go back to `steps/sail.md`.
